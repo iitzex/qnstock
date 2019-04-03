@@ -1,0 +1,7 @@
+beautifulsoup4==4.7.1
+bs4==0.0.1
+dropbox==9.3.0
+Flask==1.0.2
+numpy==1.15.4
+pandas==0.23.4
+requests==2.21.0

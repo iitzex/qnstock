@@ -10,7 +10,7 @@ DBX = {}
 def generator(name):
     global DBX
 
-    with open(f'config/{name}.html', 'w') as f:
+    with open(f'templates/{name}.html', 'w') as f:
         print('Generating HTML of ' + name.upper() + ' ...')
 
         head = '''

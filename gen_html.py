@@ -46,13 +46,13 @@ def generator(name):
 
 def html():
     generator('tse')
-    # generator('filter')
+    generator('filter')
 
 
 def dictionary():
     global DBX
 
-    with open('config/links.csv', 'r') as f:
+    with open('links.csv', 'r') as f:
         lists = csv.reader(f)
 
         for pair in lists:

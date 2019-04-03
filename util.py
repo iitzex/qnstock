@@ -40,7 +40,7 @@ def convert_time():
 
 
 def get_list(name, bound=0):
-    f = open(f'config/{name}.csv', 'r')
+    f = open(f'{name}.csv', 'r')
     lists = csv.reader(f)
 
     r = [] 

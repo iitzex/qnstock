@@ -45,7 +45,7 @@ def generator(name):
 
 def html():
     generator('tse')
-    # generator('filter')
+    generator('filter')
 
 
 def dictionary():

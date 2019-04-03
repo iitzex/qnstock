@@ -16,12 +16,23 @@ def get_file():
     dbx.files_download_to_file('filter.csv', '/config/filter.csv')
 
 
-@app.route('/')
-def index():
+def main():
     get_file()
     html()
 
+
+@app.route('/')
+def index():
+    main()
+
     return render_template('tse.html')
+
+
+@app.route('/filter')
+def filter():
+    main()
+
+    return render_template('filter.html')
 
 
 if __name__ == '__main__':

@@ -1,3 +1,5 @@
+import os
+
 import dropbox
 
 from flask import Flask, Markup, render_template
@@ -19,8 +21,7 @@ def index():
     get_file()
     html()
 
-    html = render_template('tse.html')
-    return html
+    return render_template('tse.html')
 
 
 if __name__ == '__main__':

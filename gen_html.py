@@ -4,11 +4,10 @@ import pandas as pd
 
 from util import get_list
 
-DBX = {}
-
 
 def generator(name):
-    global DBX
+    DBX = dictionary()
+    print(DBX)
 
     with open(f'templates/{name}.html', 'w') as f:
         print('Generating HTML of ' + name.upper() + ' ...')
@@ -24,7 +23,6 @@ def generator(name):
 
         body = ''
         for sid, title in get_list(name):
-
             try:
                 if '-' in sid:
                     body += "<hr width='95%' color='red'><hr width='95%' color='red'>"
@@ -38,7 +36,8 @@ def generator(name):
                 body += f"</br><img src='{(DBX[sid]).strip()}' height='91%' width='100%'  class='center' /></p>\n"
 
             except KeyError as e:
-                print(sid, e)
+                # print(sid, e)
+                pass
 
         text = head + body + end
         f.write(text)
@@ -46,12 +45,11 @@ def generator(name):
 
 def html():
     generator('tse')
-    generator('filter')
+    # generator('filter')
 
 
 def dictionary():
-    global DBX
-
+    DBX = {}
     with open('links.csv', 'r') as f:
         lists = csv.reader(f)
 
@@ -60,7 +58,8 @@ def dictionary():
             # print(pair)
             DBX.update(item)
 
+    return DBX
+
 
 if __name__ == '__main__':
-    dictionary()
     html()

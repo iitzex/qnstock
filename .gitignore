@@ -1,5 +1,7 @@
 ENV
 pic
+__pycache__
+.idea
 .vscode
 *.csv
 *.html

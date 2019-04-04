@@ -32,7 +32,8 @@ def generator(name):
                 body += f"<a href='http://www.wantgoo.com/stock/astock/index?StockNo={sid}'> 玩股網</a>"
                 body += f"<a href='https://goodinfo.tw/StockInfo/StockDetail.asp?STOCK_ID={sid}'> Goodinfo</a>"
                 body += f"<a href='https://histock.tw/stock/{sid}'> HiStock</a>"
-                body += f"</br><img src='{(DBX[sid]).strip()}' height='91%' width='100%'  class='center' /></p>\n"
+                body += f"<a href='https://www.fugle.tw/ai/{sid}'> Fugle</a>"
+                body += f"</br><img src='{(DBX[sid]).strip()}' width='100%'  class='center' /></p>\n"
 
             except KeyError as e:
                 # print(sid, e)

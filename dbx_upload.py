@@ -21,7 +21,7 @@ def upload(basedir, fn):
         data = f.read()
 
         f = dbx.files_upload(data, path, mode)
-        link = dbx.sharing_create_shared_link_with_settings(path)
+        link = dbx.sharing_create_shared_link(path)
 
         raw_link = f'{link.url[:-4]}raw=1'
         print(raw_link)

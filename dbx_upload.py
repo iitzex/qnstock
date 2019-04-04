@@ -31,16 +31,16 @@ def upload(basedir, fn):
 
 
 def main():
-    # pic_path = 'pic'
-    # files = os.listdir(pic_path)
-    # with open('config/links.csv', 'w') as f:
-    #     for i in sorted(files):
-    #         link = upload(pic_path, i)
-    #         f.write(f'{i[:-4]}, {link}\n')
+    pic_path = 'pic'
+    files = os.listdir(pic_path)
+    with open('config/links.csv', 'w') as f:
+        for i in sorted(files):
+            link = upload(pic_path, i)
+            f.write(f'{i[:-4]}, {link}\n')
 
     upload('config', 'links.csv')
-    upload('config', 'tse.html')
-    upload('config', 'filter.html')
+    upload('config', 'tse.csv')
+    upload('config', 'filter.csv')
 
 
 if __name__ == "__main__":

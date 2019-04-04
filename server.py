@@ -3,7 +3,7 @@ import os
 import dropbox
 
 from flask import Flask, render_template
-from gen_html import html
+from gen_html import generator
 
 TOKEN = 'zKrtNUrN93AAAAAAAAAADdLM3ZHigfrm5bntL0vUR0pCXhKDWxGYaVIEsq8cLXRs'
 dbx = dropbox.Dropbox(TOKEN)
@@ -16,21 +16,21 @@ def get_file():
     dbx.files_download_to_file('filter.csv', '/config/filter.csv')
 
 
-def main():
+def main(name):
     get_file()
-    html()
+    generator(name)
 
 
 @app.route('/')
 def index():
-    main()
+    main('tse')
 
     return render_template('tse.html')
 
 
 @app.route('/filter')
 def filter():
-    main()
+    main('filter')
 
     return render_template('filter.html')
 

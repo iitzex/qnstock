@@ -43,10 +43,6 @@ def generator(name):
         f.write(text)
 
 
-def html():
-    generator('tse')
-    generator('filter')
-
 
 def dictionary():
     DBX = {}

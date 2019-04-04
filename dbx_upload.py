@@ -1,6 +1,9 @@
 import os
+from multiprocessing import Pool
 
 import dropbox
+
+from util import get_list
 
 TOKEN = 'zKrtNUrN93AAAAAAAAAADdLM3ZHigfrm5bntL0vUR0pCXhKDWxGYaVIEsq8cLXRs'
 
@@ -29,18 +32,22 @@ def upload(basedir, fn):
         return raw_link
 
 
-def main():
+def pal_uplaod(items):
+    sid, title = items
+    print('{}, {}'.format(sid, title))
+
     pic_path = 'pic'
-    files = os.listdir(pic_path)
-    with open('config/links.csv', 'w') as f:
-        for i in sorted(files):
-            link = upload(pic_path, i)
-            f.write(f'{i[:-4]}, {link}\n')
+    with open('config/links.csv', 'a') as f:
+        link = upload(pic_path, f'{sid}.svg')
+        f.write(f'{sid}, {link}\n')
+
+
+if __name__ == "__main__":
+    os.remove('config/links.csv')
+
+    l = get_list('filter')
+    Pool(7).map(pal_uplaod, l)
 
     upload('config', 'links.csv')
     upload('config', 'tse.csv')
     upload('config', 'filter.csv')
-
-
-if __name__ == "__main__":
-    main()

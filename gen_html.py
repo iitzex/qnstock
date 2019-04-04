@@ -7,7 +7,6 @@ from util import get_list
 
 def generator(name):
     DBX = dictionary()
-    print(DBX)
 
     with open(f'templates/{name}.html', 'w') as f:
         print('Generating HTML of ' + name.upper() + ' ...')

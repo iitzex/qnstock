@@ -2,12 +2,12 @@ import os
 
 import dropbox
 
-from flask import Flask, Markup, render_template
+from flask import Flask, render_template
 from gen_html import html
 
-app = Flask(__name__)
 TOKEN = 'zKrtNUrN93AAAAAAAAAADdLM3ZHigfrm5bntL0vUR0pCXhKDWxGYaVIEsq8cLXRs'
 dbx = dropbox.Dropbox(TOKEN)
+app = Flask(__name__)
 
 
 def get_file():

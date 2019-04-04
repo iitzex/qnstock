@@ -3,11 +3,10 @@ import os
 import dropbox
 
 TOKEN = 'zKrtNUrN93AAAAAAAAAADdLM3ZHigfrm5bntL0vUR0pCXhKDWxGYaVIEsq8cLXRs'
-dbx = dropbox.Dropbox(TOKEN)
 
 
 def upload(basedir, fn):
-    global dbx
+    dbx = dropbox.Dropbox(TOKEN)
 
     if basedir == '':
         fullname = f'{fn}'
@@ -22,7 +21,7 @@ def upload(basedir, fn):
         data = f.read()
 
         f = dbx.files_upload(data, path, mode)
-        link = dbx.sharing_create_shared_link(path)
+        link = dbx.sharing_create_shared_link_with_settings(path)
 
         raw_link = f'{link.url[:-4]}raw=1'
         print(raw_link)

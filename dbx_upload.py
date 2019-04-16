@@ -1,5 +1,6 @@
 import os
 from multiprocessing import Pool
+from shutil import copyfile
 
 import dropbox
 
@@ -35,16 +36,6 @@ def upload(basedir, fn):
         return link
 
 
-def pal_upload(items):
-    global ll
-    sid, title = items
-    print('{}, {}'.format(sid, title))
-
-    pic_path = 'pic'
-    link = upload(pic_path, f'{sid}.svg')
-    ll.append(link)
-
-
 def get_links():
     if os.path.isfile('config/links.csv'):
         os.remove('config/links.csv')
@@ -65,22 +56,10 @@ def get_links():
             # f.write(f'{sid}, {ln}\n')
 
 
-def pic():
-    lt = get_list('filter')
-    for item in lt:
-        pal_upload(item)
-    # p = Pool(2)
-    # p.map(pal_upload, lt)
-    # p.close()
-    # p.join()
-    print(ll)
-
-
 if __name__ == "__main__":
-    # pic()
-
     get_links()
 
+    copyfile('../kdtrace/filter.csv', 'config/filter.csv')
     upload('config', 'links.csv')
     upload('config', 'filter.csv')
     # upload('config', 'tse.csv')
